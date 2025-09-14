@@ -1,0 +1,288 @@
+/* --- Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* --- Global Styles & Google Theme --- */
+:root {
+  --background-color: #f8f9fa;
+  --sidebar-bg: #ffffff;
+  --main-bg: #f8f9fa;
+  --container-bg: #ffffff;
+  --input-bg: #f1f3f4;
+  --border-color: #dadce0;
+  --border-focus: #1a73e8;
+  --primary-color: #1a73e8; /* Google Blue */
+  --text-color: #202124; /* Google Dark Grey */
+  --text-muted: #5f6368; /* Google Medium Grey */
+  --status-green: #1e8e3e; /* Google Green */
+  --status-red: #d93025;   /* Google Red */
+  --font-heading: 'Roboto', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: relative;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-header i {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.sidebar-header h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-button:hover {
+  background-color: #e8f0fe; /* Light Google Blue */
+  color: var(--primary-color);
+}
+
+.nav-button.active {
+  background-color: #e8f0fe;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.nav-button i { width: 20px; text-align: center; font-size: 1rem; }
+
+/* --- Main Content --- */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.main-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.main-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 0.25rem 0 2rem 0;
+}
+
+.tab-content { animation: fadeIn 0.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- Stats Grid & Cards --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.stat-card-icon { font-size: 1.8rem; color: var(--primary-color); }
+.stat-card-title {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+.stat-card-value {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* --- Users Tab & Table --- */
+.table-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.search-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px #d2e3fc;
+}
+.filter-select, .action-button {
+  padding: 10px 15px;
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.action-button {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+.action-button:hover { background-color: #1b66c9; }
+
+.table-container { 
+  max-height: 65vh; 
+  overflow-y: auto; 
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+.students-table { width: 100%; border-collapse: collapse; }
+.students-table th, .students-table td { padding: 14px 18px; text-align: left; font-size: 0.9rem; }
+.students-table th { 
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.students-table td { border-bottom: 1px solid var(--border-color); }
+.students-table tr:last-child td { border-bottom: none; }
+.no-data-cell { text-align: center; padding: 3rem; color: var(--text-muted); }
+
+.status-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 500; }
+.status-badge.active { background-color: #e6f4ea; color: var(--status-green); }
+.status-badge.used { background-color: #fce8e6; color: var(--status-red); }
+
+.action-link { color: var(--primary-color); font-size: 1.1rem; text-decoration: none; }
+.action-link:hover { color: #1b66c9; }
+
+/* --- Coupon Tab --- */
+.coupon-info-panel {
+    background: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+.coupon-info-panel h3 { font-family: var(--font-heading); margin-top: 0; }
+.coupon-info-panel p, .coupon-info-panel li { color: var(--text-muted); line-height: 1.6; }
+.coupon-info-panel strong { color: var(--text-color); font-weight: 500; }
+
+
+/* --- Utility & Loading --- */
+.loading-container, .error-container {
+  display: flex; justify-content: center; align-items: center;
+  height: 80vh; text-align: center; font-size: 1.5rem;
+}
+.error-container { color: var(--status-red); }
+
+/* --- Animated Background --- */
+.background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  display: block;
+  list-style: none;
+  border-radius: 25%;
+  animation-name: float-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  bottom: -200px;
+  filter: blur(2px);
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+

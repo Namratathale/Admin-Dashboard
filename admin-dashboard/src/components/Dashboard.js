@@ -17,7 +17,7 @@ const Dashboard = () => {
     const fetchStudents = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5001/api/students');
+        const response = await axios.get('https://admin-dashboard-api-qq7y.onrender.com');
         setStudents(response.data);
         setError(null);
       } catch (err) {
@@ -65,4 +65,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
